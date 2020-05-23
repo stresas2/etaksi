@@ -22,5 +22,4 @@ class MarksController
     {
         $this->entityManager = $entity_manager;
     }
-    
 }
