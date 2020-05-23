@@ -1,0 +1,12 @@
+body {
+    background-color: red;
+}
+
+#content {
+    min-width: 300%;
+    overflow: auto;
+}
+
+.kaskas {
+    background-color: orange;
+}
