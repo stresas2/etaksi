@@ -2,16 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\CoffeOrder;
-use App\Entity\FlowerOrder;
 use App\Service\OrderService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\VarDumper\VarDumper;
 
-class OrderJsonController extends AbstractController
+class OrderJsonController
 {
     /**
      * @var OrderService
@@ -26,7 +23,7 @@ class OrderJsonController extends AbstractController
 
     /**
      * @return JsonResponse
-     * @Route("/json", name="json", methods={"GET"})
+     * @Route("/json", name="json")
      */
     public function Action(): JsonResponse
     {
