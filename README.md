@@ -25,7 +25,7 @@ Instrukcija:
 
 ```http://127.0.0.1:8000/```
 
-### Projekto paleidimas/išjungimas:
+###### Projekto paleidimas/išjungimas:
 
 * Projektas paleidžiamas su komanda:
 
