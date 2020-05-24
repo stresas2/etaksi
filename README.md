@@ -1,7 +1,7 @@
 Symfony eTaksi
 ==================================
 
-Barch'as Master sukonfiguruota ant XAMMP. <br />
+Brach'as Master sukonfiguruota ant XAMMP. <br />
 Brach'as Docker sukonfiguruota ant dockerio <br />
 Grazios dienos! :)
 
