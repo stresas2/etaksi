@@ -1,8 +1,8 @@
 parameters:
   database_driver: pdo_mysql
-  database_host: localhost
+  database_host: mysql
   database_port: 3306
   database_name: data
   database_path: null
   database_user: root
-  database_password:
+  database_password: root
