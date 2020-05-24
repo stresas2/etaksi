@@ -14,37 +14,17 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FlowerOrderRepository extends ServiceEntityRepository
 {
+
+    public const Rose = 0;
+
+    public const Tulip = 1;
+
+    public const Lily = 2;
+
+    public const Bluebell = 3;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, FlowerOrder::class);
     }
-
-    // /**
-    //  * @return FlowerOrder[] Returns an array of FlowerOrder objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?FlowerOrder
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

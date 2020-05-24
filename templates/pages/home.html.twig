@@ -3,6 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% form_theme coffee_form 'bootstrap_4_layout.html.twig' %}
+{% form_theme flower_form 'bootstrap_4_layout.html.twig' %}
 
 {% block content %}
     {% for message in app.flashes('success') %}
@@ -27,12 +28,9 @@
                     <h2>Coffee Order</h2>
                 </div>
                 <hr />
-                test
+                {{ form(flower_form) }}
             </div>
         </div>
     </div>
 
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
 {% endblock %}

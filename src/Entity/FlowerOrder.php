@@ -30,12 +30,8 @@ class FlowerOrder
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Street;
+    private $StreetAddress;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $StreetNumber;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -76,26 +72,14 @@ class FlowerOrder
         return $this;
     }
 
-    public function getStreet(): ?string
+    public function getStreetAddress(): ?string
     {
-        return $this->Street;
+        return $this->StreetAddress;
     }
 
-    public function setStreet(string $Street): self
+    public function setStreetAddress(string $StreetAddress): self
     {
-        $this->Street = $Street;
-
-        return $this;
-    }
-
-    public function getStreetNumber(): ?int
-    {
-        return $this->StreetNumber;
-    }
-
-    public function setStreetNumber(int $StreetNumber): self
-    {
-        $this->StreetNumber = $StreetNumber;
+        $this->StreetAddress = $StreetAddress;
 
         return $this;
     }

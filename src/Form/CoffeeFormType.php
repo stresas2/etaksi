@@ -61,7 +61,6 @@ class CoffeeFormType extends AbstractType
 
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
             $data = $event->getData();
-//            $data['CreatedAt'] = new \DateTime('now');
             if ($data['Milk'] === strval(CoffeOrderRepository::WithoutMilk)) {
                 $data['MilkType'] = null;
             };

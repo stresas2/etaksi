@@ -29,5 +29,6 @@ $(document).ready(() => {
     $("#coffee_form_Milk").change(() => {
         checkMilk();
     });
+
 });
 
