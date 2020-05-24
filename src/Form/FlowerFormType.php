@@ -2,22 +2,15 @@
 
 namespace App\Form;
 
-use App\Entity\CoffeOrder;
 use App\Entity\FlowerOrder;
-use App\Repository\CoffeOrderRepository;
 use App\Repository\FlowerOrderRepository;
-use PhpParser\Node\Expr\BinaryOp\Greater;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\Length;
@@ -36,25 +29,58 @@ class FlowerFormType extends AbstractType
                     'Bluebell' => FlowerOrderRepository::Bluebell,
                 ],
                 'constraints' => new Type('integer'),
-                'required' => true
+                'required' => true,
+                'label' => 'Flower name'
             ])
-            ->add('Country', LocaleType::class, [
-                'constraints' => new Type('string'),
+            ->add('Country', CountryType::class, [
+                'constraints' => [
+                    new Type('string'),
+                    new Length(
+                        [
+                            'min' => 2,
+                            'max' => 50,
+                            'minMessage' => 'Must be at least {{ limit }} characters long',
+                            'maxMessage' => 'Cannot be longer than {{ limit }} characters',
+                            'allowEmptyString' => false
+                        ]),
+                ],
                 'required' => true
             ])
             ->add('City', TextType::class, [
-                'constraints' => new Type('string'),
+                'constraints' => [
+                    new Type('string'),
+                    new Length(
+                        [
+                            'min' => 4,
+                            'max' => 50,
+                            'minMessage' => 'Must be at least {{ limit }} characters long',
+                            'maxMessage' => 'Cannot be longer than {{ limit }} characters',
+                            'allowEmptyString' => false
+                        ]),
+                ],
                 'required' => true
             ])
             ->add('street_address', TextType::class, [
-                'constraints' => new Type('string'),
-                'required' => true
+                'constraints' => [
+                    new Type('string'),
+                    new Length(
+                        [
+                            'min' => 8,
+                            'max' => 70,
+                            'minMessage' => 'Must be at least {{ limit }} characters long',
+                            'maxMessage' => 'Cannot be longer than {{ limit }} characters',
+                            'allowEmptyString' => false
+                        ]),
+                ],
+                'required' => true,
+                'label' => 'Address exp(Vytauto g. 10-2)'
             ])
             ->add('deliver_on', DateTimeType::class, [
                 'required' => true,
                 'input' => 'datetime',
                 'years' => range(date('Y'), date('Y')+3),
                 'constraints' => new GreaterThan('now'),
+                'attr' => ['class' => 'form-control form-inline h-100']
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Order',

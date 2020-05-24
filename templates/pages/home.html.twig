@@ -11,26 +11,29 @@
             {{ message }}
         </div>
     {% endfor %}
-    <div class="row">
+    <div class="row mx-1">
         <div class="col-md-6 col-xs-12">
-            <div class="rounded m-2 p-2 bg-light shadow ">
+            <div class="rounded p-2 bg-light shadow ">
                 <div class="text-center">
                     <h2>Coffee Order</h2>
                 </div>
-                <hr />
+                <hr/>
                 {{ form(coffee_form) }}
             </div>
         </div>
 
         <div class="col-md-6 col-xs-12">
-            <div class="rounded m-2 p-2 bg-light shadow">
+            <div class="rounded p-2 bg-light shadow">
                 <div class="text-center">
                     <h2>Flower Order</h2>
                 </div>
-                <hr />
+                <hr/>
                 {{ form(flower_form) }}
             </div>
         </div>
     </div>
 
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 {% endblock %}

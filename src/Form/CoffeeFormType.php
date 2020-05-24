@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -37,13 +38,14 @@ class CoffeeFormType extends AbstractType
                     'Macchiato' => CoffeOrderRepository::Macchiato,
                 ],
                 'constraints' => new Type('integer'),
+                'label' => 'Coffee Type',
                 'required' => true
             ])
             ->add('CupSize', ChoiceType::class, [
                 'choices' => [
-                    '100 ml' => 0,
-                    '200 ml' => 1,
-                    '300 ml' => 2,
+                    '100 ml' => CoffeOrderRepository::OneHundred,
+                    '200 ml' => CoffeOrderRepository::TwoHundred,
+                    '300 ml' => CoffeOrderRepository::ThreeHundred,
                 ],
                 'constraints' => new Type('integer'),
                 'required' => true
@@ -51,8 +53,20 @@ class CoffeeFormType extends AbstractType
             ->add('Location', TextType::class, [
                 'constraints' => [
                     new Type('string'),
-                    new Length(1)
+                    new Length(
+                        [
+                            'min' => 8,
+                            'max' => 20,
+                            'minMessage' => 'Must be at least {{ limit }} characters long',
+                            'maxMessage' => 'Cannot be longer than {{ limit }} characters',
+                            'allowEmptyString' => false
+                        ]),
+                    new Regex("/^([-+]?)([\d]{1,2})(((\.)(\d+)(,)))(\s*)(([-+]?)([\d]{1,3})((\.)(\d+))?)$/")
                 ],
+                'attr' => [
+                    'placeholder' => '54.63827, 23.94515',
+                ],
+                'label' => 'Coordinates, exp(54.63827, 23.94515)',
                 'required' => true
             ])
             ->add('save', SubmitType::class, [

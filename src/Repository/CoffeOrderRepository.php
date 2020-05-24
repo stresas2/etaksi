@@ -24,6 +24,12 @@ class CoffeOrderRepository extends ServiceEntityRepository
 
     public const Macchiato = 2;
 
+    public const OneHundred = 0;
+
+    public const TwoHundred = 1;
+
+    public const ThreeHundred = 2;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CoffeOrder::class);
