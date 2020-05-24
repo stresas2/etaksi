@@ -56,7 +56,7 @@ class CoffeeFormType extends AbstractType
                 'required' => true
             ])
             ->add('save', SubmitType::class, [
-                'label' => 'Save',
+                'label' => 'Order',
             ]);
 
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
