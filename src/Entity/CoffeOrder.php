@@ -23,7 +23,7 @@ class CoffeOrder
     private $Milk;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=TRUE)
      */
     private $MilkType;
 
@@ -32,6 +32,10 @@ class CoffeOrder
      */
     private $CupSize;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $CreatedAt;
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -59,7 +63,7 @@ class CoffeOrder
         return $this->MilkType;
     }
 
-    public function setMilkType(int $MilkType): self
+    public function setMilkType(int $MilkType): ?self
     {
         $this->MilkType = $MilkType;
 
@@ -89,4 +93,17 @@ class CoffeOrder
 
         return $this;
     }
+
+    public function getCreatedAt(): \DateTimeInterface
+    {
+        return $this->CreatedAt;
+    }
+
+    public function setCreatedAt($CreatedAt)
+    {
+        $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
 }

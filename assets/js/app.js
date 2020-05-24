@@ -10,4 +10,24 @@ import '../css/app.css';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 // import $ from 'jquery';
-import angular from 'angular';
+
+import $ from "jquery";
+
+$(document).ready(() => {
+
+    const checkMilk = () => {
+        const milk = $("#coffee_form_Milk").val();
+        if (milk === '0') {
+            $('#coffee_form_MilkType').parent().hide();
+        } else {
+            $('#coffee_form_MilkType').parent().show();
+        }
+    };
+
+    checkMilk();
+
+    $("#coffee_form_Milk").change(() => {
+        checkMilk();
+    });
+});
+

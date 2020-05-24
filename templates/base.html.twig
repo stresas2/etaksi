@@ -10,14 +10,12 @@
         <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet"/>
     {% endblock %}
 </head>
-<body class="kaskas">
+<body>
 
 {% include 'inc/navbar.html.twig' %}
 
 {% block content %}{% endblock %}
 
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
 </body>
 </html>
+
